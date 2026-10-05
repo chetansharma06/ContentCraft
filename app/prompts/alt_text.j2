@@ -1,0 +1,13 @@
+Write accessible alt text for the supplied product image or product facts.
+
+Product facts:
+{{ product_facts }}
+
+Tone: {{ tone }}
+Language: {{ language }}
+Content angle: {{ content_angle }}
+Brand rules:
+{% for rule in brand_rules %}- {{ rule }}
+{% endfor %}
+Describe only visible or supplied details. Do not invent colors, materials, objects, people, image contents, or other facts. If image details are not supplied, do not imply that an image was inspected.
+Return only the requested structured JSON.

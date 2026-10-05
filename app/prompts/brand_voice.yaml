@@ -1,0 +1,19 @@
+defaults:
+  tone: warm, clear, and practical
+  language: English
+brand_rules:
+  - Use concise, natural language and concrete wording.
+  - Do not make unsupported safety, health, environmental, or performance claims.
+  - Avoid hype, pressure tactics, and guarantees.
+  - Preserve exact product names, measurements, and specifications.
+qc:
+  required_brand_terms: []
+  banned_brand_terms:
+    - miracle cure
+    - guaranteed results
+    - risk-free
+  prohibited_claims:
+    - '(?i)\bcures?\b'
+    - '(?i)\bguaranteed?\b'
+    - '(?i)\bclinically proven\b'
+    - '(?i)\bFDA approved\b'

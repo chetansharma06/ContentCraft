@@ -1,0 +1,13 @@
+Create a product description for a home or kitchen product.
+
+Product facts:
+{{ product_facts }}
+
+Tone: {{ tone }}
+Language: {{ language }}
+Content angle: {{ content_angle }}
+Brand rules:
+{% for rule in brand_rules %}- {{ rule }}
+{% endfor %}
+Use only the supplied product facts. Do not invent materials, dimensions, capacity, compatibility, performance, or other facts. If a detail is not supplied, omit it.
+Return only the requested structured JSON.

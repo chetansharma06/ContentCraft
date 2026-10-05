@@ -1,0 +1,6 @@
+name,price,description,specifications,keywords
+Travel Mug,22.95,Leak-resistant travel mug,"{""capacity_ml"": 400}",coffee;commute
+,12.00,Name is blank,"{""material"": ""steel""}",invalid;missing-name
+Broken Price,free,Price is not numeric,"{""material"": ""plastic""}",invalid;price
+Broken Specs,8.50,Specifications are malformed,"{material: steel}",invalid;json
+"Negative Price",-3.00,Price is outside the allowed range,"{""category"": ""clearance""}",invalid;negative
