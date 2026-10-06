@@ -30,6 +30,14 @@ describe('API client', () => {
     await expect(checkHealth()).resolves.toEqual({ status: 'ok' })
   })
 
+  it('reports a clear error when the backend cannot be reached', async () => {
+    vi.mocked(fetch).mockRejectedValue(new TypeError('Failed to fetch'))
+
+    await expect(checkHealth()).rejects.toThrow(
+      'Cannot reach the ContentCraft API. Check that the backend is running and try again.',
+    )
+  })
+
   it('maps content_type to the API type query and validates response rows', async () => {
     vi.mocked(fetch).mockResolvedValue(jsonResponse([contentItem]))
 

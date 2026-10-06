@@ -206,6 +206,19 @@ def test_openapi_documents_swagger_routes(api_client):
     assert "/publish" in paths
 
 
+def test_cors_allows_the_development_frontend(api_client):
+    response = api_client.options(
+        "/health",
+        headers={
+            "Origin": "http://127.0.0.1:5173",
+            "Access-Control-Request-Method": "GET",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "http://127.0.0.1:5173"
+
+
 def test_generation_job_honors_selected_tones_and_content_angles(api_client):
     uploaded = api_client.post(
         "/products/upload",

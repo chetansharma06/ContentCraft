@@ -36,6 +36,12 @@ class Settings(BaseSettings):
     MAX_CONCURRENCY: int = 5
     MAX_RETRIES: int = 3
     DEFAULT_LANGUAGE: str = "en"
+    BACKEND_HOST: str = "127.0.0.1"
+    BACKEND_PORT: int = 8000
+    FRONTEND_HOST: str = "127.0.0.1"
+    FRONTEND_PORT: int = 5173
+    CORS_ORIGINS: Optional[str] = None
+    VITE_API_BASE_URL: str = "/api"
 
     @field_validator("LLM_PROVIDER", mode="before")
     @classmethod

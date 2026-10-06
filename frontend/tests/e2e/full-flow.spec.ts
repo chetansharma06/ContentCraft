@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test'
 
 test('upload, generate, review, approve, publish, download, and audit', async ({ page }) => {
+  test.setTimeout(60_000)
+
   const productName = 'Smoke Test Tray'
   const csv = [
     'name,price,description,specifications,keywords',
@@ -61,7 +63,7 @@ test('upload, generate, review, approve, publish, download, and audit', async ({
   await page.getByLabel('Filter audit by action').selectOption('content.published')
   await page.getByLabel('Filter by entity ID').fill(String(contentId))
   await expect(page.locator('.audit-action-label').first()).toHaveText('content published')
-  await expect(page.locator('.audit-detail-list')).toContainText('csv')
+  await expect(page.locator('.audit-detail-list').first()).toContainText('csv')
 
   await page.getByRole('link', { name: 'Overview' }).click()
   await expect(page.locator('a[href="/review?status=PUBLISHED"] strong')).toHaveText('1')

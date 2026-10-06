@@ -157,13 +157,18 @@ async function request<T>(
   init?: RequestInit,
   responseType: 'json' | 'text' = 'json',
 ): Promise<T> {
-  const response = await fetch(`${apiBase}${path}`, {
-    ...init,
-    headers: {
-      ...(init?.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
-      ...init?.headers,
-    },
-  })
+  let response: Response
+  try {
+    response = await fetch(`${apiBase}${path}`, {
+      ...init,
+      headers: {
+        ...(init?.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+        ...init?.headers,
+      },
+    })
+  } catch {
+    throw new ApiError('Cannot reach the ContentCraft API. Check that the backend is running and try again.', 0)
+  }
 
   if (!response.ok) {
     const payload: unknown = await response.json().catch(() => null)
